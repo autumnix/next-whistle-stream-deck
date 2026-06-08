@@ -40,7 +40,7 @@ Each shell script is a single `curl` call to `http://127.0.0.1:8787` — the def
 ## Getting started
 
 1. **Set up and start the companion app** — see [next-whistle-streaming-companion](https://github.com/autumnix/next-whistle-streaming-companion) for install and config instructions. The companion must be running before the deck buttons do anything useful.
-2. **Import the profile** — open the Stream Deck app, go to profiles, and import `src/profiles/NWS Companion (Mac).streamDeckProfile`.
+2. **Import the profile** — open the Stream Deck desktop app, go to Profiles in preferences, and import `src/profiles/NWS Companion (Mac).streamDeckProfile`. The `.streamDeckProfile` file is not usable directly; it must be imported through the app.
 3. **Install the shell scripts** — copy the scripts from `src/sh/` to a stable location on your machine (e.g. `~/bin/nwsc/`), and update any Stream Deck "Open" or "System: Open" actions in the profile to point to those paths.
 4. **Adjust for your setup** — scene names, overlay source names, and PTZ presets are baked into the companion's `config.yaml`, not the scripts. If your config differs from the defaults, update it there.
 
@@ -51,6 +51,7 @@ Each shell script is a single `curl` call to `http://127.0.0.1:8787` — the def
 The profile is a starting point, not a fixed standard. Common things to change:
 
 - **Fewer cameras** — remove or repurpose the cam 2 buttons and preset rows.
+- **More cameras** — add a script per camera following the same `go-cam{N}.sh` and `cam{N}-preset-{N}.sh` pattern; the companion's PTZ API accepts any configured camera ID, so scaling up is straightforward.
 - **Different overlays** — the overlay scripts call `/overlay/{group}/show?source={source}` — swap the group and source names to match your OBS scene structure.
 - **Smaller deck** — move the highest-priority buttons (save-and-arm, jam-reset, jam-reset-and-play) to a condensed layout and put the rest in a folder.
 
